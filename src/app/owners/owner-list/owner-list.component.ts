@@ -51,4 +51,7 @@ export class OwnerListComponent implements OnInit {
     this.router.navigate(['/owners/add']);
   }
 
+  deleteOwner() {
+    console.log('Lösche Benutzer');
+  }
 }
