@@ -60,12 +60,15 @@ export class OwnerEditComponent implements OnInit {
 
   deleteOwner(owners: Owner) {
     console.log('Try Delete Owner');
-    this.router.navigate(['/owners']);
     this.ownerService.deleteOwner(owners.id.toString()).subscribe(
       // res => this.gotoOwnerDetail(owners),
       error => this.errorMessage = error as any,
     );
-    this.router.navigate(['/owners']);
     console.log('Delete Owner');
+    this.gotoOwnersList();
+  }
+
+  gotoOwnersList() {
+    this.router.navigate(['/owners']);
   }
 }
