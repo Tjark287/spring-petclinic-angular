@@ -21,6 +21,7 @@
  */
 
 import {Pet} from '../pets/pet';
+import {C} from '@angular/cdk/keycodes';
 
 export interface Owner {
   id: number;
@@ -30,4 +31,18 @@ export interface Owner {
   city: string;
   telephone: string;
   pets: Pet[];
+
+//   constructor(Id: number, FirstName: string, LastName: string, Address: string, City: string, Telephone: string) {
+//     this.id = Id;
+//     this.firstName = FirstName;
+//     this.lastName = LastName;
+//     this.address = Address;
+//     this. city = City;
+//     this.telephone = Telephone;
+//
+// }
+//
+//   get FirstName(): string {
+//     return this.firstName;
+//   }
 }

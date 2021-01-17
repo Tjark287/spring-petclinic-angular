@@ -31,6 +31,8 @@ import {HandleError, HttpErrorHandler} from '../error.service';
 
 @Injectable()
 export class OwnerService {
+  owners: Observable<Owner[]>;
+
 
   entityUrl = environment.REST_API_URL + 'owners';
 
@@ -45,6 +47,7 @@ export class OwnerService {
       .pipe(
         catchError(this.handlerError('getOwners', []))
       );
+   // return this.owners;
   }
 
   getOwnerById(ownerId: string): Observable<Owner> {
@@ -74,6 +77,5 @@ export class OwnerService {
          catchError(this.handlerError('deleteOwner', [ownerId]))
       );
   }
-
 
 }

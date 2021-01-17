@@ -21,12 +21,20 @@
  */
 
 import {Component} from '@angular/core';
+import {Owner} from './owners/owner';
+import {Router} from '@angular/router';
+import {OwnerService} from './owners/owner.service';
+import construct = Reflect.construct;
+import {Observable} from 'rxjs';
+import {startWith, map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-
+  public searchTerm: string = '';
+  owners: Owner[];
 }
+
