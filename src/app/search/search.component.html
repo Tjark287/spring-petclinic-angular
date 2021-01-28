@@ -14,37 +14,68 @@
   <br>
     <div>
       <form class="example-form">
-        <mat-form-field id="SearchInput" class="example-full-width">
-        <mat-label>Suche</mat-label>
-        <input matInput
-               type="text"
-               [(ngModel)]="searchTerm"
-               placeholder="Suche"
-               [formControl]="control"
-               [matAutocomplete]="auto">
-        </mat-form-field>
-        <mat-autocomplete [ngSwitch]="viewMode" #auto="matAutocomplete">
-<!--          <mat-option *ngFor="let street of filteredStreets | async" [value]="street" >-->
-<!--            {{street}}-->
-<!--          </mat-option>-->
+        <div class="search-hero">
+          <input class="form-control" type="text" name="search" [(ngModel)]="searchTerm" autocomplete="off" placeholder="&#61442;  Start searching for a hero by id or name or country">
+        </div>
+        <div [ngSwitch]="viewMode" >
+          <!--Owner Search------------------------------------------->
           <div *ngSwitchCase="'owner'">
-            <mat-option  *ngFor="let owner of listOwner " [value]="owner.id" (click)="goToOwner(owner)" >
-              <b>Name:</b> {{owner.firstName}} {{owner.lastName}}, <b>Address:</b> {{owner.address}}, <b>Tel:</b> {{owner.telephone}}, <b>City:</b> {{owner.city}}
-            </mat-option>
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Addresse</th>
+                <th>Telefon</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let owner of listOwner | filter:searchTerm" (click)="goToOwner(owner)">
+                <td>{{owner.firstName}} {{owner.lastName}}</td>
+                <td>{{owner.address}}</td>
+                <td>{{owner.country}}</td>
+                <td>{{owner.telephone}}</td>
+              </tr>
+              </tbody>
+            </table>
           </div>
-
+<!--Pet Serach.....................................................................-->
           <div *ngSwitchCase="'pet'">
-            <mat-option *ngFor="let pet of listPet " [value]="pet.id" (click)="goToPet(pet)">
-              <b>Tiername:</b> {{pet.name}} <b> Besitzername:</b>{{pet.owner.firstName}}
-            </mat-option>
-          </div>
-          <div *ngSwitchCase="'visit'">
-            <mat-option *ngFor="let visit of listVisit " [value]="visit.id" (click)="goToVisit(visit)" >
-              {{visit.date}}
-            </mat-option>
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>Tiername</th>
+                <th>Besitzer</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let pet of listPet | filter:searchTerm" (click)="goToPet(pet)">
+                <td>{{pet.name}}</td>
+                <td>{{pet.owner.firstName}} {{pet.owner.lastName}}</td>
+              </tr>
+              </tbody>
+            </table>
           </div>
 
-        </mat-autocomplete>
+<!--Date Search---------------------------------------------------------------------------------->
+
+          <div *ngSwitchCase="'visit'">
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>Besuchsdatum</th>
+                <th>Tiername</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let visit of listVisit | filter:searchTerm" (click)="goToVisit(visit)">
+                <td>{{visit.date}} </td>
+                <td>{{visit.pet.name}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
       </form>
     </div>
 

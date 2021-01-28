@@ -40,7 +40,9 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatInputModule} from '@angular/material/input';
-import { FilterPipe } from './filter.pipe';
+
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 
 
@@ -50,7 +52,6 @@ import { FilterPipe } from './filter.pipe';
   declarations: [
     AppComponent,
     SearchComponent,
-    FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +70,8 @@ import { FilterPipe } from './filter.pipe';
     MatAutocompleteModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    Ng2SearchPipeModule
   ],
   providers: [
     HttpErrorHandler,

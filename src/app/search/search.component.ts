@@ -4,7 +4,6 @@ import {Router} from '@angular/router';
 import {Owner} from '../owners/owner';
 import {OwnerFilterServiceService} from '../Services/owner-filter-service.service';
 import {Observable} from 'rxjs/index';
-import {map, startWith} from 'rxjs/operators';
 import {OwnerService} from '../owners/owner.service';
 import {PetService} from '../pets/pet.service';
 import {VisitService} from '../visits/visit.service';
@@ -19,7 +18,7 @@ import {Visit} from '../visits/visit';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  public searchTerm = '';
+  searchTerm;
   control = new FormControl();
   streets: string[] = ['Besitzern', 'Tieren', 'Besuchen'];
   public ownerliste: Owner[];
@@ -99,9 +98,9 @@ export class SearchComponent implements OnInit {
     this.router.navigate(['/owners', owner.id]);
   }
   public goToPet(pet: Pet) {
-    this.router.navigate(['/pet', pet.id]);
+    this.router.navigate(['/owners', pet.owner.id]);
   }
   public goToVisit(visit: Visit) {
-    this.router.navigate(['/visit', visit.id]);
+    this.router.navigate(['/owners', visit.pet.owner.id]);
   }
 }
