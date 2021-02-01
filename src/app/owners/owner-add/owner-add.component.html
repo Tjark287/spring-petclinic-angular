@@ -19,7 +19,7 @@
 <div class="container-fluid">
   <div class="container xd-container">
     <h2>
-      New Owner 
+      New Owner
     </h2>
     <form (ngSubmit)="onSubmit(ownerForm.value)" #ownerForm="ngForm" class="form-horizontal">
       <div class="form-group" hidden="true">
@@ -72,7 +72,7 @@
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <button class="btn btn-default" type="button" (click)="gotoOwnersList()">Back</button>
-          <button class="btn btn-default" type="submit" [disabled]="!ownerForm.valid">Add Owner</button>
+          <button class="btn btn-default" type="submit" id="testCreateOwner" [disabled]="!ownerForm.valid">Add Owner</button>
         </div>
       </div>
     </form>

@@ -77,7 +77,7 @@
         <div class="col-sm-offset-2 col-sm-10">
           <button class="btn btn-default" (click)="gotoOwnerDetail(owner)">Back</button>
           <button type="submit" [disabled]="!ownerForm.valid" class="btn btn-default">Update Owner</button>
-          <button type="submit" (click)="deleteOwner(owner)" class="btn btn-default">Delete Owner</button>
+          <button type="submit" id="testDeleteOwner" (click)="deleteOwner(owner)" class="btn btn-default">Delete Owner</button>
         </div>
       </div>
     </form>
