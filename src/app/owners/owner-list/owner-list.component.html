@@ -28,6 +28,7 @@
           <th>City</th>
           <th>Telephone</th>
           <th>Pets</th>
+          <th>Delete</th>
         </tr>
         </thead>
 
@@ -42,6 +43,7 @@
         <tr *ngFor="let pet of owner.pets">
           {{ pet.name }}
         </tr>
+        <td><button id="delete-icon" (click)="deleteOwner1(owner)">X</button></td>
         </tbody>
       </table>
       <div>

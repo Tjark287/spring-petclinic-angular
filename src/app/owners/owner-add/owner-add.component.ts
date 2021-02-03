@@ -24,6 +24,7 @@ import {Component, OnInit} from '@angular/core';
 import {OwnerService} from '../owner.service';
 import {Owner} from '../owner';
 import {Router} from '@angular/router';
+import {DialogService} from '../../Services/dialog.service';
 
 @Component({
   selector: 'app-owner-add',
@@ -35,7 +36,10 @@ export class OwnerAddComponent implements OnInit {
   owner: Owner;
   errorMessage: string;
 
-  constructor(private ownerService: OwnerService, private router: Router) {
+  constructor(private ownerService: OwnerService,
+              private router: Router,
+              private dialogService: DialogService
+              ) {
     this.owner = {} as Owner;
   }
 
@@ -43,18 +47,23 @@ export class OwnerAddComponent implements OnInit {
   }
 
   onSubmit(owner: Owner) {
-    owner.id = null;
-    this.ownerService.addOwner(owner).subscribe(
-      newOwner => {
-        this.owner = newOwner;
-        this.gotoOwnersList();
-      },
-      error => this.errorMessage = error as any
-    );
+    this.dialogService.openConfirmDialog('Are your Sure ?')
+      .afterClosed().subscribe(res => {
+        console.log(res);
+      });
+    // owner.id = null;
+    // this.ownerService.addOwner(owner).subscribe(
+    //   newOwner => {
+    //     this.owner = newOwner;
+    //     this.gotoOwnersList();
+    //   },
+    //   error => this.errorMessage = error as any
+    // );
   }
 
   gotoOwnersList() {
     this.router.navigate(['/owners']);
+
   }
 
 }

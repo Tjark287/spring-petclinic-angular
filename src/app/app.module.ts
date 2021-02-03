@@ -42,6 +42,10 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatInputModule} from '@angular/material/input';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIcon, MatIconModule} from '@angular/material/icon';
 
 
 
@@ -52,6 +56,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
   declarations: [
     AppComponent,
     SearchComponent,
+    MatConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,12 +76,16 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [
     HttpErrorHandler,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [MatConfirmDialogComponent]
 })
 export class AppModule {
 }

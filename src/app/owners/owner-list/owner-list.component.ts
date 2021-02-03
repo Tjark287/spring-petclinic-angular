@@ -24,6 +24,7 @@ import {Component, OnInit} from '@angular/core';
 import {OwnerService} from '../owner.service';
 import {Owner} from '../owner';
 import {Router} from '@angular/router';
+import {DialogService} from '../../Services/dialog.service';
 
 @Component({
   selector: 'app-owner-list',
@@ -34,7 +35,10 @@ export class OwnerListComponent implements OnInit {
   errorMessage: string;
   owners: Owner[];
 
-  constructor(private router: Router, private ownerService: OwnerService) {
+  constructor(private router: Router,
+              private ownerService: OwnerService,
+              private dialogService: DialogService
+              ) {
   }
 
   ngOnInit() {
@@ -53,5 +57,17 @@ export class OwnerListComponent implements OnInit {
 
   deleteOwner() {
     console.log('Lösche Benutzer');
+  }
+  deleteOwner1(owner: Owner) {
+    console.log('Delete');
+    this.dialogService.openConfirmDialog(' Do you want delete ' + owner.firstName + ' ' + owner.lastName + '?')
+      .afterClosed().subscribe(res => {
+        if (res === true) {
+          console.log('Do Delete');
+        } else {
+          console.log('Don´t Delete');
+      }
+
+    });
   }
 }
