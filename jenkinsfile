@@ -1,0 +1,13 @@
+node {
+        stage('Install node modules'){
+            sh "npm install"
+        }
+
+        stage('Build'){
+            sh "npm runbuild:ssr"
+        }
+
+        stage('Deploy'){
+            sh "pm2 restart all"
+        }
+    }
