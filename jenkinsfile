@@ -1,4 +1,8 @@
 node {
+
+        stage('Checkout SCM'){
+            git branch: 'SP2', url: 'git@github.com:Tjark287/spring-petclinic-angular.git'
+        }
         stage('Install node modules'){
             sh "npm install"
         }
