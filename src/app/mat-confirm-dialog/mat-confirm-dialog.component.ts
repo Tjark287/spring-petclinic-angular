@@ -1,5 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {Router} from '@angular/router';
+import {Owner} from '../owners/owner';
 
 @Component({
   selector: 'app-mat-confirm-dialog',
@@ -9,7 +11,9 @@ import { MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 export class MatConfirmDialogComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data,
-              public  dialogRef: MatDialogRef<MatConfirmDialogComponent>) { }
+              public  dialogRef: MatDialogRef<MatConfirmDialogComponent>,
+              private router: Router
+              ) { }
 
   ngOnInit(): void {
   }
@@ -18,4 +22,5 @@ export class MatConfirmDialogComponent implements OnInit {
 
     this.dialogRef.close(false);
   }
+
 }
