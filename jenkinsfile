@@ -24,7 +24,7 @@ node {
             checkout scm    
       }           stage('Build image') {         
        
-            app = docker.build("brandonjones085/test")    
+            app = docker.build("tjark287/test")    
        }           stage('Test image') {                       app.inside {            
              
              sh 'echo "Tests passed"'        
